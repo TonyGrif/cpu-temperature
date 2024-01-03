@@ -2,9 +2,12 @@
 """
 
 from pathlib import Path
+from typing import Tuple
+
 import numpy as np
-from src.equations import piecewise_linear_interpolation as pli
+
 from src.equations import least_squares_transpose as lst
+from src.equations import piecewise_linear_interpolation as pli
 
 
 class Core:
@@ -48,7 +51,7 @@ class Core:
             raise AttributeError("Negative core number is not allowed")
         self._core_num = num
 
-    def add_reading(self, point: tuple) -> None:
+    def add_reading(self, point: Tuple) -> None:
         """Add a new reading to the reading list.
 
         Parameters:
@@ -56,7 +59,7 @@ class Core:
         """
         self.readings.append(point)
 
-    def _to_numpy_arrays(self) -> tuple:
+    def _to_numpy_arrays(self) -> Tuple:
         """Convert the reading points to x and y matricies.
 
         Returns:
